@@ -1,0 +1,99 @@
+<div class="candidate-profile">
+    <img src="{{API_URL + user?.role.data.candidateInfo.banner}}" class="candidate-profile_banner" >
+    <div class="candidate-profile_content">
+        <div class="candidate-profile_content_header">
+            <img src="{{API_URL + user?.role.data.candidateInfo.image}}" class="candidate-profile_content_header_logo" >
+            <div>
+                {{ user?.role.data.candidateInfo.designation }}
+                <div class="candidate-profile_content_header_company">{{ user?.role.data.candidateInfo.name }}</div>
+                <div *ngFor="let data of skillList" [hidden]="data.itemName === ''" class="candidate-profile_content_header_tags">
+                    {{ data.itemName }}
+                </div>
+            </div>
+        </div>
+        <div *ngIf="role === 'employer'" class="candidate-profile_content_invite" (click)="invite()">
+            invite
+        </div>
+        <div class="candidate-profile_content_details">
+            <div class="candidate-profile_content_details_left">
+                <div class="candidate-profile_content_details_left_about">About Candidate</div>
+                {{ user?.role.data.candidateInfo.about }}
+                <div class="candidate-profile_content_details_left_about">Education</div>
+                <div *ngFor="let educ of user?.role.data.candidateInfo.education" class="candidate-profile_content_details_left_education">
+                    {{ educ.university }}
+                    <div class="candidate-profile_content_details_left_education_university">{{ educ.degree }} degree, {{ educ.course }}</div>
+                    <div class="candidate-profile_content_details_left_education_year">{{ educ.year }}</div>
+                </div>
+                <div class="candidate-profile_content_details_left_about">Work</div>
+                <div *ngFor="let educ of user?.role.data.candidateInfo.work" class="candidate-profile_content_details_left_education">
+                    {{ educ.company }}
+                    <div class="candidate-profile_content_details_left_education_university">{{ educ.title }}</div>
+                    <div class="candidate-profile_content_details_left_education_year">{{ educ.fromYear }} - {{ educ.toYear }}</div>
+                    <div class="candidate-profile_content_details_left_education_description">{{ educ.description }}</div>
+                </div>
+            </div>
+            <div class="candidate-profile_content_details_right">
+                <div class="candidate-profile_content_details_right_info">
+                    <div>
+                        Salary
+                    </div>
+                    <div>
+                        {{ user?.role.data.candidateInfo.salary }}
+                    </div>
+                </div>
+                <div class="candidate-profile_content_details_right_info">
+                    <div>
+                        Email
+                    </div>
+                    <div>
+                        {{ user?.email }}
+                    </div>
+                </div>
+                <div class="candidate-profile_content_details_right_info">
+                    <div>
+                        Phone
+                    </div>
+                    <div>
+                        {{ user?.role.data.candidateInfo.phone }}
+                    </div>
+                </div>
+                    
+                <button (click)="downloadFile(user?.role.data.candidateInfo.resume)">
+                    Resume
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #inviteModal let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Invite <span>{{ user?.role.data.candidateInfo.name }}</span> to apply</h5>
+          <svg data-dismiss="modal" (click)="modal.close()" style="width: 25px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path></svg>
+        </div>
+        <div class="modal-body">
+            <div class="candidate-profile_content_invite_title">Select job to invite</div>
+            <div class="candidate-profile_content_invite_designation">
+                <div *ngFor="let data of jobs; let i = index;">
+                    <div *ngIf="data.designation !== undefined && data.designation !== ''">
+                        <input type="checkbox" (change)="toggle(i)" [disabled]="isCandidateInvited(data)">{{ data.designation }}
+                    </div>
+                </div>
+            </div>
+            <div class="candidate-profile_content_invite_btn" (click)="inviteCandidate(success, fail)">Invite</div>
+        </div>
+      </div>
+</ng-template>
+
+<ng-template #success let-d="dismiss">
+    <div class="jobs_form_success">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z"></path></svg>
+    <div class="jobs_form_success_title">Success</div>
+    <div class="jobs_form_success_description">Your profile has been updated</div>
+    <div class="jobs_form_success_button"><span (click)="d('Cross click')">Close</span></div>
+    </div>
+</ng-template>
+<ng-template #fail>
+    fail
+</ng-template>

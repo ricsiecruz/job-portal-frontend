@@ -1,0 +1,6 @@
+<div class="invites">
+    <div *ngFor="let data of jobInvites" class="invites_list">
+        <div>{{ data.invited.date_invited | date: 'MMMM dd, yyyy' }}</div>
+        {{ data.employerInfo.company }} has invited you to apply as a <span routerLink="/job-post/details/{{data.employerId}}/jobId/{{data._jobId}}">{{ data.designation }}</span>
+    </div>
+</div>

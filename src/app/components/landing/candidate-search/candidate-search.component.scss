@@ -1,0 +1,63 @@
+.candidates {
+    display: flex;
+
+    &_filter {
+        background-color: #F5F5F5;
+        border-radius: 8px;
+        padding: 25px;
+        width: 450px;
+        height: fit-content;
+
+        &_label {
+            font-weight: 700;
+            color: #121212;
+            font-size: 1rem;
+        }
+
+        &_search {
+            cursor: pointer;
+            padding: 12px 30px;
+            border: none;
+            color: #fff;
+            font-weight: 700;
+            background: #14a077;
+            border-radius: 4px;
+        }
+
+        &_reset {
+            height: 50px;
+            float: right;
+            cursor: pointer;
+            padding: 14px 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            border: 1px solid #14a077;
+            color: #121212;
+            background: #fff;
+            border-radius: 4px;
+            transition: all 0.2s ease-in-out 0s;
+            align-items: center;
+            display: inline-flex;
+        }
+    }
+}
+
+::ng-deep .selected-list .c-btn {
+    margin-top: 6px;
+    border: 1px solid #E5E5E5;
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    padding: 0 10px;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    font-size: inherit;
+    margin-bottom: 15px;
+}
+
+::ng-deep .c-angle-down, ::ng-deep .c-angle-up {
+    display: none;
+}

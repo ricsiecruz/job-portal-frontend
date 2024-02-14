@@ -1,0 +1,23 @@
+.sidebar {
+    padding: 25px;
+    width: 290px;
+    
+    div {
+        display: flex;
+        text-transform: capitalize;
+        color: #121212;
+        padding: 12px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    svg {
+        width: 21px;
+        margin-right: 12px;
+    }
+
+    &_active, div:hover {
+        background-color: #F5F5F2;
+        font-weight: 600;
+    }
+}

@@ -1,0 +1,122 @@
+@import 'bootstrap/scss/_functions';
+@import 'bootstrap/scss/_variables';
+@import 'bootstrap/scss/mixins/_breakpoints';
+
+.active {
+    color: #121212;
+    background-color: transparent;
+}
+
+.nav-link {
+    color: #64666c;
+}
+
+.nav-link.active {
+    color: #14a077;
+}
+
+.tab-pane {
+    padding: 20px 0;
+}
+
+.employer-about {
+    &_banner {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        @include media-breakpoint-down(sm) {
+            height: 200px;
+        }
+    }
+    &_content {
+        width: 1410px;
+        margin: 0 auto;
+        padding-top: 40px;
+        padding-bottom: 60px;
+        @include media-breakpoint-down(sm) {
+            padding: 15px;
+            width: 100%;
+        }
+        &_header {
+            display: flex;
+            padding-bottom: 30px;
+            &_logo {
+                width: 60px;
+                height: 60px;
+                position: relative;
+                border-radius: 100%;
+                overflow: hidden;
+                margin-right: 15px;
+            }
+            &_company {
+                font-size: 20px;
+                font-weight: 700;
+                color: #121212;
+            }
+            &_location {
+                align-items: center;
+                display: flex;
+                color: #64666c;
+                font-size: 14px;
+
+                svg {
+                    width: 17px;
+                    margin-right: 5px;
+                }
+            }
+        }
+        &_details {
+            display: flex;
+            @include media-breakpoint-down(sm) {
+                display: block;
+            }
+            &_left {
+                width: 100%;
+                padding-right: 65px;
+                @include media-breakpoint-down(sm) {
+                    padding: 0;
+                }
+                button {
+                    align-items: center;
+                    display: flex;
+                    span {
+                        color: #fff;
+                        background-color: #14a077;
+                        border-radius: 100%;
+                        padding: 2px 6px;
+                        font-size: 10px;
+                        margin-left: 5px;
+                    }
+                }
+                &_jobs {
+                    column-count: 2;
+                    @include media-breakpoint-down(sm) {
+                        column-count: 1;
+                    }
+                }
+            }
+            &_right {
+                padding: 25px;
+                border-radius: 8px;
+                background-color: #f5f5f5;
+                width: 450px;
+                height: fit-content;
+                @include media-breakpoint-down(sm) {
+                    width: 100%;
+                }
+                &_info {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+        }
+    }
+}
+
+::ng-deep .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+    border: none !important;
+}
+
+::ng-deep .ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar, .ck.ck-editor__top .ck-sticky-panel {
+    border: none !important;
+}

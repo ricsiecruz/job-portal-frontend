@@ -1,0 +1,8 @@
+<div class="candidates">
+    <app-candidate-search (filterChanged)="onFilterChanged($event)" (clearFilters)="clearFilters()"></app-candidate-search>
+    <div class="candidates_content">
+        <ng-container *ngFor="let user of role">
+            <app-candidate-list [user]="user"></app-candidate-list>
+        </ng-container>
+    </div>
+</div>

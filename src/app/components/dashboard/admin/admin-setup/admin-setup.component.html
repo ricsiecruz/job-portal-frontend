@@ -1,0 +1,10 @@
+<div class="setup">    
+    <div class="setup_btn">
+        <span (click)="add()">add</span>
+    </div>
+    <div class="setup_content">
+        <div *ngFor="let item of setup">
+            {{ item.setup }}
+        </div>
+    </div>
+</div>

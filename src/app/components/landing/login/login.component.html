@@ -1,0 +1,28 @@
+<div class="login">
+    <div class="login_error" *ngIf="error">{{ error }}</div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+        <div class="login_email">
+            <div for="email">Email</div>
+            <input class="form-control" formControlName="email" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+            <div *ngIf="submitted && f['email'].errors">
+                <div *ngIf="f['email'].errors['required']" class="login_email_invalid">Email is required</div>
+            </div>
+        </div>
+        <div class="login_password">
+            <div for="password">Password</div>
+            <input class="form-control" formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+            <div *ngIf="submitted && f['password'].errors">
+                <div *ngIf="f['password'].errors['required']" class="login_password_invalid">Password is required</div>
+            </div>
+        </div>
+        <!-- <div class="login_forgot-password">
+            <span (click)="forgotPassword()">Forgot Password?</span>
+        </div> -->
+        <button class="login_button btn">
+            Login
+        </button>
+        <div class="login_register">
+            Don't you have an account? <span (click)="register()">Register</span>
+        </div>
+    </form>
+</div>

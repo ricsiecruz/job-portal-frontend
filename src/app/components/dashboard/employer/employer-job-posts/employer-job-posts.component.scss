@@ -1,0 +1,76 @@
+@import 'bootstrap/scss/_functions';
+@import 'bootstrap/scss/_variables';
+@import 'bootstrap/scss/mixins/_breakpoints';
+
+.jobs {
+    background-color: #FFFFFF;
+    margin: 30px;
+    padding: 15px;
+    @include media-breakpoint-down(sm) {
+        overflow-x: auto;
+        display: grid;
+        margin: 15px;
+    }
+
+    &_header {
+        display: flex;
+        color: #64666c;
+        font-weight: 600;
+        font-size: 12px;
+        padding: 15px 10px;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #E5E5E5;
+
+        &_designation {
+            width: 30%;
+        }
+
+        &_applicants {
+            width: 155px;
+        }
+    }
+
+    &_list {
+        display: flex;
+        font-size: 14px;
+        padding: 15px 10px;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #F5F5F5;
+
+        &_designation {
+            width: 30%;
+
+            &_title {
+                color: #121212;
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
+    
+        &_location {
+            align-items: center;
+            display: flex;
+            color: #64666c;
+    
+            svg {
+                width: 17px;
+                margin-right: 3px;
+            }
+        }
+
+        &_applicants {
+            width: 155px;
+        }
+
+        &_actions {
+            width: 20px;
+        }
+    }
+
+    &_empty {
+        text-align: center;
+        padding: 20px;
+    }
+}

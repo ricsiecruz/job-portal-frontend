@@ -1,0 +1,72 @@
+<form #send="ngForm" (ngSubmit)="onSubmit(send.value, success, fail)">
+    <div class="add-job">
+        <div class="add-job_designation">
+            <div for="designation">Designation</div>
+            <input class="form-control" id="designation" name="designation" [(ngModel)]="designation" placeholder="designation" >
+        </div>
+        <div class="add-job_description">
+            <div for="description">Description</div>
+            <ckeditor [editor]="editor" id="description" name="description" [(ngModel)]="description"></ckeditor>
+        </div>
+        <div class="add-job_group">
+            <div class="add-job_group_category">
+                Category
+                <select [(ngModel)]="selectedCategory" name="status" placeholder="select" (ngModelChange)="onOptionsSelected()">
+                    <option class="dropdown-item" disabled selected value="undefined">Select Category</option>
+                    <option *ngFor="let data of category" [ngValue]="data">{{data.category}}</option>
+                </select>
+            </div>
+            <div class="add-job_group_position">
+                Position
+                <select [(ngModel)]="selectedPosition" name="status" placeholder="select" (ngModelChange)="positionSelected()">
+                    <option class="dropdown-item" disabled selected value="undefined">Select Position</option>
+                    <option *ngFor="let data of positions" [ngValue]="data">{{data.position}}</option>
+                </select>
+            </div>
+            <div class="add-job_group_setup">
+                Setup
+                <select [(ngModel)]="selectedSetup" name="status" placeholder="select" (ngModelChange)="setupSelected()">
+                    <option class="dropdown-item" disabled selected value="undefined">Select Setup</option>
+                    <option *ngFor="let data of setup" [ngValue]="data">{{data.setup}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="add-job_group">
+            <div class="add-job_group_rate">
+                Rate
+                <select [(ngModel)]="selectedRate" name="status" placeholder="select" (ngModelChange)="rateSelected()">
+                    <option class="dropdown-item" disabled selected value="undefined">Select Rate</option>
+                    <option *ngFor="let data of rate" [ngValue]="data">{{data.rate}}</option>
+                </select>
+            </div>
+            <div class="add-job_group_salary">
+                Minimum Salary
+                <input class="form-control" placeholder="Minimum" name="minSalary" [(ngModel)]="minSalary" >
+            </div>
+            <div class="add-job_group_salary">
+                Maximum Salary
+                <input class="form-control" placeholder="Maximum" name="maxSalary" [(ngModel)]="maxSalary" >
+            </div>
+        </div>
+        <div class="add-job_urgent">
+            <input type="checkbox">Urgent
+        </div>
+    </div>
+    <div>
+        <button class="add-job_button btn" type="submit">
+            Post Job
+        </button>
+    </div>
+</form>
+
+<ng-template #success let-d="dismiss">
+    <div class="profile_success">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z"></path></svg>
+      <div class="profile_success_title">Success</div>
+      <div class="profile_success_description">Your profile has been updated</div>
+      <div class="profile_success_button"><span (click)="d('Cross click')">Close</span></div>
+    </div>
+</ng-template>
+<ng-template #fail>
+    fail
+</ng-template>

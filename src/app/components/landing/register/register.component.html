@@ -1,0 +1,56 @@
+<div class="register">
+    <form #send="ngForm" (ngSubmit)="onSubmit(send.value, success)">
+        <div class="register_role">
+            <div
+                *ngFor="let data of roles"
+                class="register_role_data form-control"
+                (click)="selectedRole(data)"
+                [ngClass]="{active: isSelected(data)}"
+                id="selectRole"
+                name="role"
+                [(ngModel)]="selectRole"
+            >
+                {{ data.role }}
+            </div>
+        </div>
+        <div *ngIf="activeRole === 'employer'">
+            <div class="register_industry">
+                <div>Industry</div>
+                <select name="industry" bindLabel="industry" [(ngModel)]="industry">
+                    <option>Select Industry</option>
+                    <option *ngFor="let industry of categories" [value]="industry['category']">{{ industry.category }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="register_email">
+            <div for="email">Email</div>
+            <input class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="Email" >
+            <div *ngIf="err" class="register_email_err">
+                {{ err }}
+            </div>
+        </div>
+        <div class="register_password">
+            <div for="password">Password</div>
+            <input class="form-control" id="password" name="password" [(ngModel)]="password" placeholder="Password" >
+        </div>
+        <div class="register_password">
+            <div for="confirm_pass">Confirm Password</div>
+            <input class="form-control" id="confirm_pass" name="confirm_pass" [(ngModel)]="confirm_pass" placeholder="Confirm Password" >
+        </div>
+        <button class="register_button btn" type="submit">
+            register
+        </button>
+        <div class="register_login">
+            Already have an account? <span (click)="login()">Login</span>         
+        </div>
+    </form>
+</div>
+
+<ng-template #success let-d="dismiss">
+    <div class="profile_success">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z"></path></svg>
+      <div class="profile_success_title">Success</div>
+      <div class="profile_success_description">Your can now login.</div>
+      <div class="profile_success_button"><span (click)="d('Cross click')">Close</span></div>
+    </div>
+</ng-template>

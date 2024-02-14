@@ -1,0 +1,10 @@
+<div class="rate">    
+    <div class="rate_btn">
+        <span (click)="add()">add</span>
+    </div>
+    <div class="rate_content">
+        <div *ngFor="let item of rate">
+            {{ item.rate }}
+        </div>
+    </div>
+</div>

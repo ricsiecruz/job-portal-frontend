@@ -1,0 +1,8 @@
+<div class="find-jobs">
+    <app-search-filter (filterChanged)="onFilterChanged($event)" (clearFilters)="clearFilters()"></app-search-filter>
+    <div class="find-jobs_content">
+        <ng-container *ngFor="let job of jobs">
+            <app-job-list [job]="job"></app-job-list>
+        </ng-container>
+    </div>
+</div>

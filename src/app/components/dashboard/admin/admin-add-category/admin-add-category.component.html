@@ -1,0 +1,10 @@
+<div class="category">
+    <form #send="ngForm" (ngSubmit)="onSubmit(send.value)">
+        <div class="category_password">
+            <input class="form-control" id="category" name="category" [(ngModel)]="category" placeholder="category" >
+        </div>
+        <button class="category_button btn" type="submit">
+            Add
+        </button>
+    </form>
+</div>

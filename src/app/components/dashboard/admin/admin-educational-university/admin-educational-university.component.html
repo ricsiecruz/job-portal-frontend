@@ -1,0 +1,11 @@
+<div class="university">
+    
+    <div class="university_btn">
+        <span (click)="add()">add</span>
+    </div>
+    <div class="university_content">
+        <div *ngFor="let item of university">
+            {{ item.university }}
+        </div>
+    </div>
+</div>

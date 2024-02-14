@@ -1,0 +1,154 @@
+.register {
+    padding: 30px;
+
+    &_role {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+        &_data {
+            background: #F5F5F2;
+            padding: 12px 20px;
+            width: 48%;
+            text-align: center;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: capitalize;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    &_industry {
+        margin-bottom: 20px;
+        div {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #121212;
+        }
+        select {
+            border: 1px solid #E5E5E5;
+            width: 100%;
+            height: 50px;
+            border-radius: 8px;
+            padding: 0 10px;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+    }
+
+    &_email {
+        margin-bottom: 20px;
+
+        div {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #121212;
+        }
+
+        input {
+            background: #F5F5F5;
+            padding: 0.68rem 1.29rem;
+        }
+
+        input:focus {
+            box-shadow: none;
+            border-color: #14a077;
+            background: transparent;
+        }
+
+        &_err {
+            font-weight: normal !important;
+            margin-top: 5px;
+            color: #dc3545 !important;
+            font-size: 14px !important;
+        }
+    }
+
+    &_password {
+        margin-bottom: 20px;
+
+        div {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #121212;
+        }
+
+        input {
+            background: #F5F5F5;
+            padding: 0.68rem 1.29rem;
+        }
+
+        input:focus {
+            box-shadow: none;
+            border-color: #14a077;
+            background: transparent;
+        }
+    }
+
+    &_button {
+        color: #FFFFFF;
+        background-color: #14a077;
+        width: 100%;
+        padding: 0.68rem 1.9rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    &_button:hover {
+        background-color: #0e7355;
+    }
+
+    &_login {
+        text-align: center;
+
+        span {
+            color: #14a077;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    }
+}
+
+.active {
+    background-color: #14a0771a;
+    color: #14a077;
+}
+
+.profile_success {
+    text-align: center;
+    padding: 3rem;
+
+    &_title {
+        font-size: 1.25rem;
+        color: #26bf94;
+        font-weight: 600;
+    }
+
+    &_description {
+        color: #8c9097;
+        padding: 5px 0;
+    }
+
+    svg {
+        width: 100px;
+        fill: #26bf94;
+    }
+
+    &_button {
+        margin-top: 50px;
+
+        span {
+            border-radius: 0.35rem;
+            color: #333335;
+            background: #f3f6f8;
+            padding: 10px;
+        }
+    }
+}

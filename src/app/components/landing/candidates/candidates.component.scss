@@ -1,0 +1,23 @@
+@import 'bootstrap/scss/_functions';
+@import 'bootstrap/scss/_variables';
+@import 'bootstrap/scss/mixins/_breakpoints';
+
+.candidates {
+    padding: 45px;
+    display: flex;
+    @include media-breakpoint-down(sm) {
+        display: block;
+        padding: 15px;
+    }
+
+    &_content {
+        column-count: 2;
+        padding-left: 20px;
+        width: 100%;
+        @include media-breakpoint-down(sm) {
+            padding: 0;
+            column-count: 1;
+            margin-top: 15px;
+        }
+    }
+}

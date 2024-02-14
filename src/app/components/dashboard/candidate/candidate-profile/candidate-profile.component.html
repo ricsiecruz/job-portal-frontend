@@ -1,0 +1,236 @@
+<form [formGroup]="profileForm" enctype="multipart/form-data">
+    <div *ngIf="!isSuccess; else success">
+      <div *ngIf="!isFail; else fail">
+        <div class="profile">
+          <div class="profile_information">
+            <div class="profile_information_title">Information</div>
+            <div class="profile_information_img">
+              <div class="profile_information_img_container">
+
+                <div>
+                  <div class="avatar-edit">
+                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileBanner (change)="uploadBanner($event)" name="banner"  />
+                  </div>
+                  <div *ngIf="banner?.name">
+                    <div class="profile_information_img_container_banner">
+                      <div id="imagePreview" [style.backgroundImage]="'url('+ API_URL +''+ banner.name +')'">
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="!banner?.name">
+                    <div class="profile_information_img_container_banner">
+                      <div id="imagePreview" [style.backgroundImage]="'url('+ API_URL +''+ banner +')'">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="profile_information_img_container_btn">
+                  <button type="submit" class="" (click)="fileBanner.click()">Browse</button>
+                  <button (click)="removeBanner()" class="profile_information_img_container_btn_remove">Remove</button>
+                </div>
+
+                <!-- Upload image -->
+                <div class="avatar-upload">
+                  <div class="avatar-edit">
+                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" name="image"  />
+                  </div>
+                  <div *ngIf="image?.name">
+                    <div class="profile_information_img_container_image">
+                      <div id="imagePreview" [style.backgroundImage]="'url('+ API_URL +''+ image.name +')'">
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="!image?.name">
+                    <div class="profile_information_img_container_image">
+                      <div id="imagePreview" [style.backgroundImage]="'url('+ API_URL +''+ image +')'">
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="image == 'http://localhost:5200/undefined'">
+                    <div class="profile_information_img_container_image">
+                      <div id="imagePreview" [style.backgroundImage]="'url('+ API_URL +''+ image +')'">
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-danger btn-lg btn-block" (click)="fileInput.click()">Browse</button>
+                  <button (click)="removeUploadedFile()" class="profile_information_img_container_btn_remove">Remove</button>
+                </div>
+
+                <div *ngIf="resume">
+                  <div *ngIf="resume.name">
+                    <button (click)="downloadFile(resume.name)" class="profile_information_img_container_resume">
+                      <div>{{ resume.name }}</div>
+                      Resume
+                    </button>
+                  </div>
+                  <div *ngIf="!resume.name">
+                    <button (click)="downloadFile(resume)" class="profile_information_img_container_resume">
+                      <div>{{ resume }}</div>
+                      Resume
+                    </button>
+                  </div>
+                </div>
+
+                <div><input type="file" (change)="selectFile($event)" /></div>
+                
+              </div>  
+            </div>
+            <div class="profile_information_group">
+              <div class="profile_information_group_content">
+                Email
+                <input class="form-control" formControlName="email" >
+              </div>
+              <div>
+                Name
+                <input class="form-control" formControlName="name" >
+              </div>
+              <div>
+                Phone
+                <input class="form-control" formControlName="phone" >
+              </div>
+              
+            </div>
+            
+            <div class="profile_information_group">
+              <div>
+                Designation
+                <input class="form-control" formControlName="designation" >
+              </div>
+              <!-- <div>
+                Location
+                <select formControlName="location" bindLabel="location" [value]="location['city']">
+                  <option>Select City</option>
+                  <option *ngFor="let location of loc" [value]="location['city']">{{location?.city}}</option>
+                </select>
+              </div> -->
+              <div>
+                Salary
+                <input class="form-control" formControlName="salary" >
+              </div>
+              
+              <div>
+                Skills
+                <angular2-multiselect [data]="skills" [(ngModel)]="selectedSkills"
+                  [settings]="dropdownSettings" 
+                  (onSelect)="onItemSelect($event)" 
+                  (onDeSelect)="OnItemDeSelect($event)"
+                  (onSelectAll)="onSelectAll($event)"
+                  (onDeSelectAll)="onDeSelectAll($event)"
+                  formControlName="skills"
+                >
+                </angular2-multiselect>
+              </div>
+              
+            </div>
+          
+            <div class="profile_information_group">
+              <div style="width: 100%;">
+                About
+                <textarea class="form-control" formControlName="about" ></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="profile_education">
+            <div class="profile_education_title">Education</div>
+            <div formArrayName="education">
+              <div *ngFor="let educationGroup of education.controls; let i = index;" [formGroupName]="i">
+                <div (click)="toggle(i)">
+                  <input formControlName="course" [readonly]="true" class="profile_education_toggle" >
+                </div>
+                <div *ngIf="show[i]">
+                  <div [formGroup]="getEducationGroup(i)" class="profile_education_group">
+                    <div class="profile_education_group_content">
+                      <label for="degree">degree</label>
+                      <select formControlName="degree">
+                        <option *ngFor="let degreeOption of degrees" [ngValue]="degreeOption.degree">{{ degreeOption.degree }}</option>
+                      </select>
+                    </div>
+                    <div class="profile_education_group_content">
+                      <label for="course">course</label>
+                      <select formControlName="course">
+                        <option *ngFor="let courseOption of courses" [ngValue]="courseOption.course">{{ courseOption.course }}</option>
+                      </select>
+                    </div>
+                    <div class="profile_education_group_content">
+                      <label for="year">year</label>
+                      <select formControlName="year">
+                        <option *ngFor="let year of yearsArray" [value]="year">{{ year }}</option>
+                      </select>
+                    </div>
+                    <div class="profile_education_group_content">
+                      <label for="university">university</label>
+                      <select formControlName="university">
+                        <option *ngFor="let university of universities" [ngValue]="university.university">{{ university.university }}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <button type="button" (click)="removeEducation(i)" class="profile_education_remove">remove</button>
+                </div>
+              </div>
+              <button type="button" (click)="addEducation()" class="profile_education_add">add</button>
+            </div>
+          </div>
+          <div class="profile_education">
+            <div class="profile_education_title">Work</div>
+            <div formArrayName="work">
+              <div *ngFor="let item of work.controls; let i = index;" [formGroupName]="i">
+                <div (click)="toggleWork(i)">
+                  <input formControlName="company" [readonly]="true" class="profile_education_toggle" >
+                </div>
+                <div *ngIf="showWork[i]">
+                  <div [formGroup]="getWork(i)" class="profile_education_group">
+                    <div class="profile_education_group_content">
+                      <label for="company">company</label>
+                      <input class="form-control" formControlName="company" >
+                    </div>
+                    <div class="profile_education_group_content">
+                      <label for="title">title</label>
+                      <input class="form-control" formControlName="title" >
+                    </div>
+                    <div class="profile_education_group_content">
+                      <label for="fromYear">fromYear</label>
+                      <select formControlName="fromYear">
+                        <option *ngFor="let year of yearsArray" [value]="year">{{ year }}</option>
+                      </select>
+                    </div>
+                    <div class="profile_education_group_content">
+                      <label for="toYear">toYear</label>
+                      <select formControlName="toYear">
+                        <option *ngFor="let year of yearsArray" [value]="year">{{ year }}</option>
+                      </select>
+                    </div>
+                    <div class="profile_education_group_content">
+                      <label for="description">description</label>
+                      <textarea class="form-control" formControlName="description" ></textarea>
+                    </div>
+                  </div>
+                  <button type="button" (click)="removeWork(i)" class="profile_education_remove">remove</button>
+                </div>
+              </div>
+              <button type="button" (click)="addWork()" class="profile_education_add">add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-save">
+      <span (click)="save(success, fail)">Save</span>
+    </div>
+  </form>
+  <ng-template #success let-d="dismiss">
+    <div class="profile_success">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z"></path></svg>
+      <div class="profile_success_title">Success</div>
+      <div class="profile_success_description">Your profile has been updated.</div>
+      <div class="profile_success_button"><span (click)="d('Cross click')">Close</span></div>
+    </div>
+  </ng-template>
+  <ng-template #fail let-d="dismiss">
+    <div class="profile_fail">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 10.5858L14.8284 7.75736L16.2426 9.17157L13.4142 12L16.2426 14.8284L14.8284 16.2426L12 13.4142L9.17157 16.2426L7.75736 14.8284L10.5858 12L7.75736 9.17157L9.17157 7.75736L12 10.5858Z"></path></svg>
+      <div class="profile_fail_title">Failed</div>
+      <div class="profile_fail_description">Your profile was not updated.</div>
+      <div class="profile_fail_button"><span (click)="d('Cross click')">Close</span></div>
+    </div>
+  </ng-template>

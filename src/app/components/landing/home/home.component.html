@@ -1,0 +1,67 @@
+<div class="home">
+    <div class="home_banner">
+        <div>
+            <div class="home_banner_text">
+                Find the job that
+                fits your life
+            </div>
+            <div class="home_banner_subtext">
+                Resume-Library is a true performance-based job board. Enjoy custom hiring products and access to up to 10,000 new resume registrations daily, with no subscriptions or user licences.
+            </div>
+        </div>
+    </div>
+    <div class="home_category">
+        <div class="home_category_text">
+            <div class="home_category_text_left">
+                <div class="home_category_text_left_title">
+                    Browse by industry
+                </div>
+                <div class="home_category_text_left_subtitle">
+                    Recruitment made easy
+                </div>
+            </div>
+            <div class="home_category_text_right">
+                <span>
+                    All Categories
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path></svg>
+                </span>
+            </div>
+        </div>
+        <div class="home_category_list">
+            <div *ngFor="let data of jobsCategoryCount | sortBy: 'asc' : '_id.category'" routerLink="/jobs-by-category/{{data._id.category}}">
+                <div *ngIf="data._id.category === null" style="display: none;">
+                </div>
+                <div *ngIf="data._id.category !== null" class="home_category_list_card">
+                    <div class="home_category_list_card_category">
+                        {{ data._id.category }}
+                    </div>
+                    {{ data.count }} jobs available
+                    <div class="home_category_list_card_explore">
+                        Explore Jobs
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="home_jobs">
+        <div class="home_jobs_text">
+            <div class="home_jobs_text_title">
+                Featured Jobs
+            </div>
+            <div class="home_jobs_text_subtitle">
+                Find the job that's perfect for you
+            </div>
+        </div>
+        <div class="home_jobs_list">
+            <ng-container *ngFor="let job of jobs | slice:0:6;">
+                <app-job-list [job]="job"></app-job-list>
+            </ng-container>
+        </div>
+        <div class="home_jobs_btn" routerLink="/find-jobs">
+            See more
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path></svg>
+        </div>
+    </div>
+</div>

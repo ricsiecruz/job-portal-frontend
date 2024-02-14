@@ -1,0 +1,24 @@
+.course {
+    margin: 30px;
+    padding: 15px;
+
+    &_btn {
+        margin-bottom: 30px;
+        text-align: right;
+
+        span {
+            cursor: pointer;
+            padding: 12px 30px;
+            border: none;
+            color: #fff;
+            font-weight: 700;
+            background: #14a077;
+            border-radius: 4px;
+        }
+    }
+
+    &_content {
+        background-color: #FFFFFF;
+        padding: 30px;
+    }
+}

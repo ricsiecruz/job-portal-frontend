@@ -1,0 +1,69 @@
+<div class="jobs">
+    <form [formGroup]="detailsForm">
+        <div class="jobs_form">
+            <div class="jobs_form_designation">
+                Designation
+                <input class="form-control" formControlName="designation" >
+            </div>
+            <div class="jobs_form_description">
+                Description
+                <ckeditor [editor]="editor" [data]="description" formControlName="description"></ckeditor>
+            </div>
+            <div class="jobs_form_group">
+                <div class="jobs_form_group_category">
+                    Category
+                    <select formControlName="category" bindLabel="category">
+                        <option>Select Category</option>
+                        <option *ngFor="let category of categories" [value]="category['category']">{{ category.category }}</option>
+                    </select>
+                </div>
+                <div class="jobs_form_group_category">
+                    Position
+                    <select formControlName="position" bindLabel="position">
+                        <option>Select Position</option>
+                        <option *ngFor="let position of positions" [value]="position['position']">{{ position.position }}</option>
+                    </select>
+                </div>
+                <div class="jobs_form_group_category">
+                    Setup
+                    <select formControlName="setup" bindLabel="setup">
+                        <option>Select setup</option>
+                        <option *ngFor="let item of setup" [value]="item['setup']">{{ item.setup }}</option>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="jobs_form_group">
+                <div class="jobs_form_group_rate">
+                    Rate
+                    <select formControlName="rate" bindLabel="rate">
+                        <option>Select rate</option>
+                        <option *ngFor="let item of rate" [value]="item['rate']">{{ item.rate }}</option>
+                    </select>
+                </div>
+                <div class="jobs_form_group_salary">
+                    Minimum Salary
+                    <input class="form-control" formControlName="minSalary" >
+                </div>
+                <div class="jobs_form_group_salary">
+                    Maximum Salary
+                    <input class="form-control" formControlName="maxSalary">
+                </div>
+            </div>
+        </div>
+        <div class="jobs_save">
+            <span (click)="save(success, fail)">Save</span>
+        </div>
+    </form>
+    <ng-template #success let-d="dismiss">
+        <div class="jobs_form_success">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z"></path></svg>
+        <div class="jobs_form_success_title">Success</div>
+        <div class="jobs_form_success_description">Your profile has been updated</div>
+        <div class="jobs_form_success_button"><span (click)="d('Cross click')">Close</span></div>
+        </div>
+    </ng-template>
+    <ng-template #fail>
+        fail
+    </ng-template>
+</div>

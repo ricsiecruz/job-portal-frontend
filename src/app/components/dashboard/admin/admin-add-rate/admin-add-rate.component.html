@@ -1,0 +1,10 @@
+<div class="rate">
+    <form #send="ngForm" (ngSubmit)="onSubmit(send.value)">
+        <div class="rate_password">
+            <input class="form-control" id="rate" name="rate" [(ngModel)]="rate" placeholder="rate" >
+        </div>
+        <button class="rate_button btn" type="submit">
+            Add
+        </button>
+    </form>
+</div>

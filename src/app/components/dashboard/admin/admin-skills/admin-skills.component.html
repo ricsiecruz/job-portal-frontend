@@ -1,0 +1,10 @@
+<div class="skills">    
+    <div class="skills_btn">
+        <span (click)="add()">add</span>
+    </div>
+    <div class="skills_content">
+        <div *ngFor="let item of skills">
+            {{ item.itemName }}
+        </div>
+    </div>
+</div>

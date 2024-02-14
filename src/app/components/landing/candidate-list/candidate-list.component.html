@@ -1,0 +1,17 @@
+<div class="candidates_content">
+    <div class="candidates_content_list" (click)="view()" routerLink="/candidate-profile/{{user._id}}">
+        <div>
+            <img *ngIf="image != 'http://localhost:5200/undefined'" src="{{image}}" >
+            <img *ngIf="image == 'http://localhost:5200/undefined'" src="assets/logo.png" >
+
+            <div class="candidates_content_list_designation">{{ user.role.data.candidateInfo.designation }}</div>
+            <div class="candidates_content_list_name">{{ user.role.data.candidateInfo.name }}</div>
+            <div class="candidates_content_list_salary">PHP {{ user.role.data.candidateInfo.salary }}/month</div>
+        </div>
+        <div class="candidates_content_list_tags">
+            <div *ngFor="let data of skillList" [hidden]="data.itemName === ''">
+                {{ data.itemName }}
+            </div>
+        </div>
+    </div>
+</div>

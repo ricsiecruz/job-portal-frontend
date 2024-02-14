@@ -1,0 +1,281 @@
+.find-jobs {
+    padding: 45px;
+    display: flex;
+
+    &_filter {
+        background-color: #F5F5F5;
+        border-radius: 8px;
+        padding: 25px;
+        width: 450px;
+        height: fit-content;
+
+        &_designation, &_location, &_company, &_position, &_setup, &_category {
+            font-weight: 700;
+            color: #121212;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            
+            label {
+                position: relative;
+                width: 100%;
+                margin-top: 6px;
+            }
+            
+            label > &_icon {
+                position: absolute;
+                top: 50%;
+                left: 10px;
+                transform: translateY(-50%);
+                color: silver;
+                font-size: 22px;
+            }
+            
+            label > input, label > select {
+                padding-left: calc(1em + 10px + 12px); /* icon width + icon padding-left + desired separation*/
+                border: 1px solid #E5E5E5;
+                width: 100%;
+                height: 50px;
+                border-radius: 8px;
+            }
+
+            label > input:focus {
+                border-color: #14a077;
+            }
+            
+            &_icon {
+                display: inline-block;
+                width: 1em;
+                height: 1em;
+                stroke-width: 0;
+                stroke: currentColor;
+                fill: currentColor;
+            }
+        }
+
+        &_location {
+            select {
+                appearance: none;
+                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+                background-repeat: no-repeat;
+                background-position: right 1rem center;
+                background-size: 1em;
+            }
+        }
+
+        &_company, &_position, &_setup, &_category {
+            select {
+                border: 1px solid #E5E5E5;
+                width: 100%;
+                height: 50px;
+                border-radius: 8px;
+                padding: 0 10px;
+                appearance: none;
+                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+                background-repeat: no-repeat;
+                background-position: right 1rem center;
+                background-size: 1em;
+            }
+        }
+    }
+
+    &_content {
+        // column-count: 2;
+        // padding-left: 20px;
+        width: 100%;
+
+        &_list {
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid #E5E5E5;
+            display: inline-block;
+            width: 100%;
+            img {
+                width: 60px;
+                border-radius: 100%;
+            }
+            &_info {
+                width: 100%;
+                padding-left: 15px;
+                &_company {
+                    font-weight: 600;
+                    color: #14a077;
+                    font-size: 14px;
+                }
+                &_designation {
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: #121212;
+                }
+                &_group {
+                    display: flex;
+                    justify-content: space-between;
+                    color: #64666c;
+                    &_location, &_date {
+                        font-size: 14px;
+                        align-items: center;
+                        display: flex;
+                        svg {
+                            width: 17px;
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+            &_tags {
+                margin-top: 15px;
+                span {
+                    display: inline-block;
+                    color: #121212;
+                    background: #F1F1F1;
+                    border-radius: 50px;
+                    padding: 6px 20px;
+                    font-size: 12px;
+                    font-weight: 500;
+                    margin-right: 5px;
+                }
+                span:empty {
+                    display: none;
+                }
+            }
+            &_salary {
+                border-top: 1px solid #E5E5E5;
+                padding-top: 20px;
+                margin-top: 15px;
+                font-size: 14px;
+                color: #64666c;
+
+                span {
+                    color: #121212;
+                    font-weight: 600;
+                    font-size: 16px;
+                }
+            }
+        }
+
+        &_list:hover {
+            box-shadow: 0 10px 25px 0 rgba(54,95,104,0.101961);
+            border-color: #14a077;
+            cursor: pointer;
+        }
+
+        &_container {
+            border: 1px solid #E5E5E5;
+            padding: 25px;
+            margin-bottom: 15px;
+
+            &_body {
+                display: flex;
+
+                img {
+                    width: 60px;
+                    height: 60px;
+                }
+
+                &_title {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    padding-left: 15px;
+                    align-items: baseline;
+
+                    &_text {
+                        &_company {
+                            font-weight: 600;
+                            color: #14a077;
+                            font-size: 14px;
+                        }
+                        &_designation {
+                            font-size: 20px;
+                            font-weight: 700; 
+                            padding: 2px 0;   
+                        }
+                        &_footer {
+                            display: flex;
+                            color: #64666c;
+                            font-size: 14px;
+
+                            &_location, &_date_posted {
+                                align-items: center;
+                                display: flex;
+                            }
+
+                            &_location {
+                                padding-right: 15px;
+                            }
+
+                            svg {
+                                width: 17px;
+                                fill: #64666c;
+                                margin-right: 2px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &_tags {
+                padding: 15px 0;
+                border-bottom: 1px solid #E5E5E5;
+                
+                &_position {
+                    color: #121212;
+                    background: #F1F1F1;
+                    border-radius: 50px;
+                    padding: 6px 20px;
+                    font-size: 12px;
+                    font-weight: 500;
+                    margin-right: 5px;
+                }
+            }
+
+            &_salary {
+                padding-top: 15px;
+                color: #64666c;
+
+                span {
+                    font-weight: 600;
+                    color: #121212;
+                }
+            }
+        }
+
+        &_container:hover {
+            box-shadow: 0 10px 25px 0 #365F681A;
+            border-color: #14a077;
+        }
+    }
+}
+
+.position, .setup {
+    color: #121212;
+    background: #F1F1F1;
+    border-radius: 50px;
+    padding: 6px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.position-none, .setup-none, .urgent {
+    display: none;
+}
+
+.bookmark {
+    width: 22px;
+    fill: #95979b;
+}
+
+.bookmarked, .bookmark:hover {
+    width: 22px;
+    fill: #eb4d4d;
+}
+
+.urgent-default {
+    color: #dc3545;
+    background: rgba(220, 53, 69, 0.2);
+    border-radius: 50px;
+    padding: 6px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 5px;
+}

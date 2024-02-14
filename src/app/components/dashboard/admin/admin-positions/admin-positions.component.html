@@ -1,0 +1,10 @@
+<div class="categories">    
+    <div class="categories_btn">
+        <span (click)="add()">add</span>
+    </div>
+    <div class="categories_content">
+        <div *ngFor="let position of positions">
+            {{ position.position }}
+        </div>
+    </div>
+</div>

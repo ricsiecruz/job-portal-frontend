@@ -1,0 +1,106 @@
+.login {
+    padding: 30px;
+
+    &_error {
+        color: #e6533c;
+        background-color: #fcedeb;
+        border: 1px solid #faddd9;
+        padding: 0.625rem 0.85rem;
+        border-radius: 0.5rem;
+        font-size: 14px;
+    }
+
+    &_email {
+        margin-bottom: 20px;
+
+        div {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #121212;
+        }
+
+        input {
+            background: #F5F5F5;
+            padding: 0.68rem 1.29rem;
+        }
+
+        input:focus {
+            box-shadow: none;
+            border-color: #14a077;
+            background: transparent;
+        }
+
+        &_invalid {
+            color: #dc3545 !important;
+            font-weight: normal !important;
+        }
+    }
+
+    &_password {
+        margin-bottom: 20px;
+
+        div {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #121212;
+        }
+
+        input {
+            background: #F5F5F5;
+            padding: 0.68rem 1.29rem;
+        }
+
+        input:focus {
+            box-shadow: none;
+            border-color: #14a077;
+            background: transparent;
+        }
+
+        &_invalid {
+            color: #dc3545 !important;
+            font-weight: normal !important;
+        }
+    }
+
+    &_forgot-password {
+        text-align: right;
+        margin-bottom: 20px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    &_button {
+        color: #FFFFFF;
+        background-color: #14a077;
+        width: 100%;
+        padding: 0.68rem 1.9rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    &_button:hover {
+        background-color: #0e7355;
+    }
+
+    &_error {
+        color: #ff2d81;
+        background: #fcedeb;
+        border: 1px solid #f9ddd9;
+        padding: 0.625rem 0.85rem;
+        border-radius: 0.5rem;
+        font-size: .8125rem;
+        margin-bottom: 20px;
+    }
+
+    &_register {
+        text-align: center;
+
+        span {
+            color: #14a077;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.invites {
+    &_list {
+        background-color: #FFFFFF;
+        margin: 30px;
+        padding: 30px;
+        div {
+            color: #64666c;
+            font-size: 14px;
+        }
+        span {
+            color: #14a077;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    }
+}

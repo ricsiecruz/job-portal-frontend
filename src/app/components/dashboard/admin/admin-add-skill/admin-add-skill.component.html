@@ -1,0 +1,10 @@
+<div class="skill">
+    <form #send="ngForm" (ngSubmit)="onSubmit(send.value)">
+        <div class="skill_password">
+            <input class="form-control" id="skill" name="skill" [(ngModel)]="skill" placeholder="skill" >
+        </div>
+        <button class="skill_button btn" type="submit">
+            Add
+        </button>
+    </form>
+</div>

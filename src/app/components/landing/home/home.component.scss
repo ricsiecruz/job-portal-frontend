@@ -1,0 +1,176 @@
+@import 'bootstrap/scss/_functions';
+@import 'bootstrap/scss/_variables';
+@import 'bootstrap/scss/mixins/_breakpoints';
+
+.home {
+
+    &_banner {
+        height: 84vh;
+        background-image: url('./../../../../assets/slider1.jpg');
+        align-items: center;
+        display: grid;
+        padding: 0 50px;
+        @include media-breakpoint-down(sm) {
+            padding: 0 15px;
+            background-position: center center;
+        }
+        &_text {
+            color: #FFFFFF;
+            font-size: 56px;
+            font-weight: 700;
+            width: 450px;
+            margin-bottom: 20px;
+            @include media-breakpoint-down(sm) {
+                font-size: 30px;
+                width: 230px;
+            }
+        }
+        &_subtext {
+            color: #FFFFFF;
+            width: 610px;
+            font-size: 18px;
+            @include media-breakpoint-down(sm) {
+                width: 345px;
+                font-size: 16px;
+            }
+        }
+    }
+
+    &_category {
+        padding: 50px;
+        @include media-breakpoint-down(sm) {
+            padding: 15px;
+        }
+        &_text {
+            padding-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            @include media-breakpoint-down(sm) {
+                display: block;
+            }
+            &_left {
+                &_title {
+                    font-size: 32px;
+                    color: #121212;
+                    font-weight: 700;
+                    @include media-breakpoint-down(sm) {
+                        font-size: 25px;
+                    }
+                }
+                &_subtitle {
+                    font-size: 18px;
+                    color: #64666c;
+                }
+            }
+            &_right {
+                color: #14a077;
+                font-size: 16px;
+                font-weight: 700;
+
+                span {
+                    align-items: center;
+                    display: flex;
+                }
+
+                svg {
+                    width: 20px;
+                    fill: #14a077
+                }
+            }
+        }
+
+        &_list {
+            column-count: 5;
+            @include media-breakpoint-down(sm) {
+                column-count: 1;
+            }
+            &_card {
+                background-color: #F5F5F5;
+                padding: 30px;
+                border-radius: 8px;
+                break-inside: avoid-column;
+                margin-bottom: 20px;
+    
+                &_category {
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+    
+                &_explore {
+                    align-items: center;
+                    color: #14a077;
+                    font-size: 14px;
+                    font-weight: 600;
+                    padding-top: 15px;
+                    display: flex;
+    
+                    svg {
+                        width: 20px;
+                    }
+                }
+            }
+            &_card:hover {
+                background: #123841;
+                color: #FFFFFF;
+                cursor: pointer;
+                // div:nth-of-type(3) {
+                div{
+                    color: #FFFFFF;
+
+                    svg {
+                        fill: #FFFFFF;
+                    }
+                }
+            }
+        }
+
+        
+    }
+
+    &_jobs {
+        padding: 50px;
+        padding-top: 0;
+        @include media-breakpoint-down(sm) {
+            padding: 15px;
+        }
+        &_text {
+            padding: 0 0px 30px 0px;
+            text-align: center;
+            &_title {
+                font-size: 32px;
+                color: #121212;
+                font-weight: 700;
+            }
+            &_subtitle {
+                font-size: 18px;
+                color: #64666c;
+            }
+        }
+        &_list {
+            column-count: 2;
+            column-gap: 30px;
+            @include media-breakpoint-down(sm) {
+                column-count: 1;
+            }
+        }
+        &_btn {
+            width: fit-content;
+            border: 1px solid #14A077;
+            border-radius: 4px;
+            padding: 15px 30px;
+            margin: 0 auto;
+            font-size: 16px;
+            font-weight: 700;
+            color: #121212;
+
+            svg {
+                width: 20px;
+            }
+        }
+        &_btn:hover {
+            color: #FFFFFF;
+            background-color: #14A077;
+            cursor: pointer;
+        }
+    }
+}

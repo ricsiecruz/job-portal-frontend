@@ -1,0 +1,11 @@
+<div class="degree">
+    
+    <div class="degree_btn">
+        <span (click)="add()">add</span>
+    </div>
+    <div class="degree_content">
+        <div *ngFor="let degree of degrees">
+            {{ degree.degree }}
+        </div>
+    </div>
+</div>

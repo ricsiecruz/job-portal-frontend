@@ -1,0 +1,10 @@
+<div class="position">
+    <form #send="ngForm" (ngSubmit)="onSubmit(send.value)">
+        <div class="position_password">
+            <input class="form-control" id="position" name="position" [(ngModel)]="position" placeholder="position" >
+        </div>
+        <button class="position_button btn" type="submit">
+            Add
+        </button>
+    </form>
+</div>

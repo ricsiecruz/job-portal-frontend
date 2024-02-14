@@ -1,0 +1,116 @@
+<form [formGroup]="profileForm" enctype="multipart/form-data">
+  <div *ngIf="!isSuccess; else success">
+    <div *ngIf="!isFail; else fail">
+      <div class="profile">
+        <div class="profile_information">
+          <div class="profile_information_title">Information</div>
+          <div class="profile_information_img">
+            <div class="group-gap">
+              <div>
+                <div>
+                  <div class="avatar-edit">
+                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileBanner (change)="uploadBanner($event)" name="banner"  />
+                  </div>
+                  <div *ngIf="banner?.name">
+                    <div class="profile_information_img_container_banner">
+                      <div id="imagePreview" [style.backgroundImage]="'url('+ API_URL +''+ banner.name +')'">
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="!banner?.name">
+                    <div class="profile_information_img_container_banner">
+                      <div id="imagePreview" [style.backgroundImage]="'url('+ API_URL +''+ banner +')'">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="profile_information_img_container_btn">
+                  <button type="submit" class="" (click)="fileBanner.click()">Browse</button>
+                  <button (click)="removeBanner()" class="profile_information_img_container_btn_remove">Remove</button>
+                </div>
+              </div>
+              <!-- Upload image -->
+              <div style="display: flex; margin-bottom: 20px;">
+                <div class="avatar-upload">
+                  <div class="avatar-edit">
+                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" name="logo"  />
+                  </div>
+                  <div *ngIf="logo?.name">
+                    <div class="avatar-preview">
+                      <div id="imagePreview" [style.backgroundImage]="'url('+ API_URL +''+ logo.name +')'">
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="!logo?.name">
+                    <div class="avatar-preview">
+                      <div id="imagePreview" [style.backgroundImage]="'url('+ API_URL +''+ logo +')'">
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="logo == 'http://localhost:5200/undefined'">
+                    <div class="avatar-preview">
+                      <div id="imagePreview" [style.backgroundImage]="'url('+ API_URL +''+ logo +')'">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <button type="submit" class="btn btn-danger btn-lg btn-block" (click)="fileInput.click()">Upload logo</button>
+                  <button (click)="removeUploadedFile()">remove logo</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="profile_information_group">
+            <div class="profile_information_group_content">
+              Email
+              <input class="form-control" formControlName="email" >
+            </div>
+            <div>
+              Company
+              <input class="form-control" formControlName="company" >
+            </div>
+            
+          </div>
+          <div class="profile_information_group">
+            <div>
+              Industry
+              <select formControlName="industry" bindLabel="industry" [value]="industry?.['category']">
+                <option>Select Industry</option>
+                <option *ngFor="let industry of categories" [value]="industry['category']">{{ industry.category }}</option>
+              </select>
+            </div>
+            <div>
+              Location
+              <select formControlName="location" bindLabel="location" [value]="location?.['city']">
+                <option>Select City</option>
+                <option *ngFor="let location of loc" [value]="location['city']">{{location?.city}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="profile_about_group">
+            <div>
+              About
+              <ckeditor [editor]="editor" formControlName="about"></ckeditor>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="profile-save">
+    <span (click)="save(success, fail)">Save</span>
+  </div>
+</form>
+<ng-template #success let-d="dismiss">
+  <div class="profile_success">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z"></path></svg>
+    <div class="profile_success_title">Success</div>
+    <div class="profile_success_description">Your profile has been updated</div>
+    <div class="profile_success_button"><span (click)="d('Cross click')">Close</span></div>
+  </div>
+</ng-template>
+<ng-template #fail>
+  fail
+</ng-template>

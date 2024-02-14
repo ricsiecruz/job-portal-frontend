@@ -1,0 +1,9 @@
+<label *ngFor="let tag of tags">
+    <input
+      type="checkbox"
+      [ngModel]="tag.selected"
+      (ngModelChange)="tag.selected = $event; onChange()"
+    />
+    {{ tag.label }}
+    </label>
+    

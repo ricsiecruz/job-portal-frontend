@@ -1,0 +1,20 @@
+<div class="candidates">
+    <div class="candidates_filter">
+        <form [formGroup]="searchForm">
+            <div *ngIf="skills">
+                <div class="candidates_filter_label">Skills</div>
+                <angular2-multiselect [data]="skills" [(ngModel)]="selectedSkills"
+                    [settings]="dropdownSettings" 
+                    (onSelect)="onItemSelect($event)" 
+                    (onDeSelect)="OnItemDeSelect($event)"
+                    (onSelectAll)="onSelectAll($event)"
+                    (onDeSelectAll)="onDeSelectAll($event)"
+                    formControlName="skills"
+                >
+                </angular2-multiselect>
+            </div>
+            <button (click)="applyFilter()" class="candidates_filter_search">Search</button>
+            <button type="reset" (click)="clearFilter()" class="candidates_filter_reset">Reset</button> 
+        </form>
+    </div>
+</div>

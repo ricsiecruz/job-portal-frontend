@@ -1,0 +1,56 @@
+.applicants {
+    background-color: #FFFFFF;
+    margin: 30px;
+    padding: 30px;
+    &_designation {
+        color: #121212;
+        font-size: 18px;
+        font-weight: 600;
+        padding-bottom: 15px;
+        &_list {
+            display: flex;
+            padding: 25px;
+            border-top: 1px solid #E5E5E5;
+            justify-content: space-between;
+            align-items: center;
+            img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                margin-right: 15px;
+            }
+            &_info {
+                display: flex;
+                width: 500px;
+                &_name {
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: #121212;
+                }
+                &_designation {
+                    font-weight: 600;
+                    color: #14a077;
+                    font-size: 14px;
+                }
+                &_skills {
+                    display: inline-block;
+                    color: #121212;
+                    background: #F1F1F1;
+                    border-radius: 50px;
+                    padding: 6px 20px;
+                    font-size: 12px;
+                    font-weight: 500;
+                    margin-right: 5px;
+                    margin-top: 5px;
+                }
+            }
+            &_date {
+                color: #64666c;
+            }
+            svg {
+                width: 20px;
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -1,0 +1,86 @@
+<div class="job-details">
+    <img src="{{API_URL + employer?.role?.data?.employerInfo?.banner}}" class="job-details_banner" >
+    <div class="job-details_info">
+        <div class="job-details_info_left">
+            <img src="{{ API_URL + employer?.role?.data?.employerInfo?.logo }}" class="job-details_info_left_logo" >
+            <div class="job-details_info_left_data">
+                <div class="job-details_info_left_data_company">
+                    {{ employer?.role?.data?.employerInfo?.company }}
+                </div>
+                <div class="job-details_info_left_data_designation">
+                    {{ jobs.job_details?.designation }}
+                </div>
+                <div class="job-details_info_left_data_sub">
+                    <div class="job-details_info_left_data_sub_location">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20.8995L16.9497 15.9497C19.6834 13.2161 19.6834 8.78392 16.9497 6.05025C14.2161 3.31658 9.78392 3.31658 7.05025 6.05025C4.31658 8.78392 4.31658 13.2161 7.05025 15.9497L12 20.8995ZM12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364L12 23.7279ZM12 13C13.1046 13 14 12.1046 14 11C14 9.89543 13.1046 9 12 9C10.8954 9 10 9.89543 10 11C10 12.1046 10.8954 13 12 13ZM12 15C9.79086 15 8 13.2091 8 11C8 8.79086 9.79086 7 12 7C14.2091 7 16 8.79086 16 11C16 13.2091 14.2091 15 12 15Z" fill="currentColor"></path></svg>
+                        {{ employer?.role?.data?.employerInfo?.location }}
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z" fill="currentColor"></path></svg>
+                        {{ jobs.job_details?.date_posted | date:"MMMM dd, yyyy" }}
+                    </div>
+                </div>
+                <div class="find-jobs_content_list_tags">
+                    <span>{{ jobs.job_details?.setup }}</span><span>{{ jobs.job_details?.position }}</span><span>{{ jobs.job_details?.urgent }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="job-details_info_right">
+            <div *ngIf="applied">
+                <div class="job-details_info_right_applied">applied</div>
+            </div>
+            <div *ngIf="!applied">
+                <div class="job-details_info_right_apply" (click)="apply(currentUserId, success, fail)">Apply</div>
+            </div>
+            <div>
+                <span>PHP {{ jobs.job_details?.minSalary }} - PHP {{ jobs.job_details?.maxSalary }}</span> / {{ jobs.job_details?.rate }}
+            </div>
+        </div>
+        <ng-template #success let-d="dismiss">
+            <div class="job-details_info_success">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z"></path></svg>
+            <div class="job-details_info_success_title">Success</div>
+            <div class="job-details_info_success_description">Job application submitted</div>
+            <div class="job-details_info_success_button"><span (click)="d('Cross click')">Close</span></div>
+            </div>
+        </ng-template>
+        <ng-template #fail>
+            fail
+        </ng-template>
+    </div>
+    <div class="job-details_content">
+        <div class="job-details_content_description">
+            <div class="job-details_content_title">
+                Job Description
+            </div>
+            <div class="job-details_content_text">
+                <ckeditor [editor]="editor" [data]="jobs.job_details?.description" [config]="editorConfig" [disabled]="true" ></ckeditor>
+            </div>
+        </div>
+        <div class="job-details_content_employer">
+            <div class="job-details_content_title">
+                Employer Information
+            </div>
+            <div class="job-details_content_employer_header">
+                <img src="{{ API_URL + employer?.role?.data?.employerInfo?.logo }}">
+                <div class="job-details_content_employer_header_info">
+                    {{ employer?.role?.data?.employerInfo?.company }}
+                    <!-- <div class="job-details_content_employer_header_info_view" (click)="view()" routerLink="/employer-about/{{data._id}}">
+                        View Profile
+                    </div> -->
+                    <div class="job-details_content_employer_header_info_view" (click)="view()" routerLink="/employer-about/{{employer?._id}}">
+                        View Profile
+                    </div>
+                </div>
+            </div>
+            <div class="job-details_content_employer_info">
+                <div>
+                    Industry
+                </div>
+                <div>
+                    {{ employer?.role?.data?.employerInfo?.industry }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
